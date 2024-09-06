@@ -1,53 +1,118 @@
+-- Humans
+INSERT INTO "Humans" ("FirstName", "LastName", "MiddleName", "Gender", "Age", "DateOfBirth")
+VALUES 
+('John', 'Doe', 'Michael', 'M', 35, '1989-03-25'),
+('Jane', 'Smith', 'Anna', 'F', 28, '1996-07-10'),
+('Richard', 'Miles', 'James', 'M', 42, '1981-01-15'),
+('Sarah', 'Johnson', 'Louise', 'F', 30, '1993-09-09'),
+('David', 'Brown', 'Henry', 'M', 55, '1969-11-11'),
+('Emily', 'Davis', 'Grace', 'F', 24, '1999-02-12'),
+('Michael', 'Wilson', 'George', 'M', 38, '1985-07-07'),
+('Laura', 'Taylor', 'Marie', 'F', 31, '1992-11-22');
+
+
 -- Patients
-INSERT INTO "Patients" ("FirstName", "LastName", "MiddleName", "Gender", "Age", "CardCreationDate")
+INSERT INTO "Patients" ("Address", "HumanId")
 VALUES
-('John', 'Doe', 'A', 'M', 30, '2024-01-15'),
-('Jane', 'Smith', 'B', 'F', 45, '2023-11-30'),
-('Michael', 'Brown', 'C', 'M', 60, '2024-03-22'),
-('Emily', 'Davis', 'D', 'F', 25, '2024-02-01'),
-('Sarah', 'Wilson', 'E', 'F', 35, '2024-01-25');
+('123 Elm St', 1),
+('456 Oak Ave', 2),
+('789 Pine Ln', 3),
+('321 Maple Blvd', 4),
+('654 Cedar Ct', 5),
+('987 Walnut Rd', 6),
+('543 Pinewood St', 7),
+('789 Cedar Dr', 8);
+
+
+
+--Cards
+INSERT INTO "Cards" ("PatientId", "CardCreationDate", "PolicyNumber")
+VALUES
+(1, '2021-03-25', 'POL123456'),
+(2, '2022-05-12', 'POL654321'),
+(3, '2020-01-05', 'POL789012'),
+(4, '2021-09-11', 'POL345678'),
+(5, '2023-06-30', 'POL567890'),
+(6, '2022-08-22', 'POL678901'),
+(7, '2023-02-14', 'POL345432'),
+(8, '2021-11-15', 'POL567321');
+
+
 
 -- Doctors
-INSERT INTO "Doctors" ("FirstName", "LastName", "MiddleName", "Category", "Experience", "DateOfBirth")
+INSERT INTO "Doctors" ("HumanId", "Category", "Experience", "IsActive")
 VALUES
-('Alice', 'Johnson', 'M', 'Cardiologist', 15, '1980-04-12'),
-('Bob', 'Williams', 'N', 'Orthopedic', 20, '1975-09-25'),
-('Charlie', 'Jones', 'O', 'Pediatrician', 10, '1990-07-08'),
-('Diana', 'Garcia', 'P', 'Dermatologist', 5, '1985-12-30'),
-('Ethan', 'Martinez', 'Q', 'Neurologist', 8, '1988-03-14');
+(3, 'Cardiologist', 10.5, true),
+(1, 'General Practitioner', 5.2, true),
+(4, 'Pediatrician', 6.1, true),
+(5, 'Surgeon', 15.8, true),
+(7, 'Neurologist', 9.3, true),
+(8, 'Dermatologist', 7.0, true),
+(2, 'Endocrinologist', 8.4, true);
+
+
+--Polyclinics
+INSERT INTO "Polyclinics" ("Name", "Address")
+VALUES
+('Central Polyclinic', '100 Main St'),
+('Northside Medical Center', '200 North St'),
+('Eastside Clinic', '300 East Ave'),
+('Westside Healthcare', '400 West Blvd'),
+('Southside Medical Plaza', '500 South St');
+
+
 
 -- Districts
-INSERT INTO "Districts" ("DistrictName", "Address")
+INSERT INTO "Districts" ("PolyclinicId", "Name", "Floor")
 VALUES
-('Central District', '123 Main St, Cityville'),
-('North District', '456 Elm St, Cityville'),
-('South District', '789 Oak St, Cityville'),
-('East District', '101 Pine St, Cityville'),
-('West District', '202 Maple St, Cityville');
+(1, 'District 1', 2),
+(1, 'District 2', 3),
+(2, 'District 3', 1),
+(2, 'District 4', 4),
+(3, 'District 5', 2),
+(4, 'District 6', 3),
+(5, 'District 7', 1);
+
+
 
 -- DoctorDistricts
 INSERT INTO "DoctorDistricts" ("DoctorId", "DistrictId", "StartTime", "EndTime", "RoomNumber")
 VALUES
-(1, 1, '09:00:00', '17:00:00', 101),
-(2, 2, '10:00:00', '18:00:00', 202),
-(3, 3, '08:00:00', '16:00:00', 303),
-(4, 4, '11:00:00', '19:00:00', 404),
-(5, 5, '07:00:00', '15:00:00', 505);
+(1, 1, '09:00', '17:00', 101),
+(2, 2, '10:00', '16:00', 102),
+(3, 3, '08:00', '14:00', 103),
+(4, 4, '12:00', '18:00', 104),
+(5, 5, '09:00', '15:00', 105),
+(6, 6, '11:00', '19:00', 106),
+(7, 7, '08:00', '13:00', 107);
+
+
 
 -- Visits
-INSERT INTO "Visits" ("PatientId", "DoctorDistrictsId", "VisitDate", "Diagnosis", "Prescriptions", "IsSickLeaveIssued", "SickLeaveDuration")
+INSERT INTO "Visits" ("PatientId", "DoctorDistrictsId", "CardId", "VisitDate", "Diagnosis", "Prescriptions", "IsSickLeaveIssued", "SickLeaveDuration")
 VALUES
-(1, 1, '2024-01-20', 'Flu', 'Flu medication', true, '5 days'),
-(2, 2, '2024-02-10', 'Back Pain', 'Pain relief', false, NULL),
-(3, 3, '2024-03-05', 'Rash', 'Topical cream', true, '2 days'),
-(4, 4, '2024-04-15', 'Check-up', 'Routine examination', false, NULL),
-(5, 5, '2024-05-25', 'Headache', 'Painkiller', true, '3 days');
+(1, 1, 1, '2024-09-01 09:00:00', 'Flu', 'Paracetamol', TRUE, '2024-09-10'),
+(1, 2, 1, '2024-09-10 10:00:00', 'Headache', 'Ibuprofen', FALSE, NULL),
+(2, 1, 2, '2024-09-05 11:00:00', 'Back Pain', 'Tylenol', TRUE, '2024-09-11'),
+(2, 3, 2, '2024-09-15 14:00:00', 'Cough', 'Cough Syrup', FALSE, NULL),
+(3, 2, 3, '2024-09-07 08:30:00', 'Allergy', 'Antihistamines', FALSE, NULL),
+(3, 4, 3, '2024-09-20 13:00:00', 'Stomach Ache', 'Antacids', TRUE, '2024-09-21'),
+(4, 3, 4, '2024-09-12 15:00:00', 'Flu', 'Cough Syrup', TRUE, '2024-09-15'),
+(4, 5, 4, '2024-09-22 09:30:00', 'Headache', 'Pain Relievers', FALSE, NULL),
+(5, 4, 5, '2024-09-03 10:00:00', 'Skin Rash', 'Topical Cream', FALSE, NULL),
+(5, 6, 5, '2024-09-18 11:30:00', 'Fever', 'Antipyretics', TRUE, '2024-09-21');
+
+
+
+
 
 -- Administrators
-INSERT INTO "Administrators" ("FirstName", "LastName", "MiddleName", "Role", "Login", "Password")
+INSERT INTO "Administrators" ("HumanId", "Role", "Login", "Password")
 VALUES
-('Michael', 'Adams', 'K', 'Admin', 'madams', 'password123'),
-('Laura', 'Baker', 'L', 'HR', 'lbaker', 'password456'),
-('James', 'Clark', 'M', 'Manager', 'jclark', 'password789'),
-('Sophia', 'Miller', 'N', 'Support', 'smiller', 'password012'),
-('Daniel', 'Taylor', 'O', 'Admin', 'dtaylor', 'password345');
+(5, 'Admin', 'admin1', 'adminPass1'),
+(1, 'Manager', 'manager1', 'managerPass1'),
+(3, 'HR', 'hr1', 'hrPass1'),
+(2, 'Supervisor', 'sup1', 'supPass1'),
+(4, 'IT Support', 'it1', 'itPass1');
+
+

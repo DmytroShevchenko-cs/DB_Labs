@@ -9,36 +9,57 @@ CREATE DATABASE lab2 ENCODING 'UTF-8' LC_COLLATE 'en_US.UTF-8' LC_CTYPE 'en_US.U
 
 SET ROLE testuser;
 
-CREATE TABLE "Patients"(
-	"PatientId" SERIAL PRIMARY KEY,
+CREATE TABLE "Humans"(
+	"HumanId" SERIAL PRIMARY KEY,
 	"FirstName" varchar(50),
 	"LastName" varchar(50),
 	"MiddleName" varchar(50),
 	"Gender" CHAR(1) CHECK ("Gender" IN ('M', 'F')),  -- M for Male, F for Female
-    "Age" INT CHECK ("Age" >= 3), 
-	"CardCreationDate" date
+    "Age" INT CHECK ("Age" >= 18), 
+	"DateOfBirth" date
+	
+);
+
+CREATE TABLE "Patients"(
+	"PatientId" SERIAL PRIMARY KEY,
+	"Address" varchar(255),
+	"HumanId" int REFERENCES "Humans"("HumanId") ON DELETE CASCADE
+);
+
+CREATE TABLE "Cards"(
+	"CardId" SERIAL PRIMARY KEY,
+	"PatientId" int REFERENCES "Patients"("PatientId") ON DELETE CASCADE,
+	"CardCreationDate" date,
+	"PolicyNumber" varchar(50)
 );
 
 CREATE TABLE "Doctors"(
 	"DoctorId" SERIAL PRIMARY KEY,
-	"FirstName" varchar(50),
-	"LastName" varchar(50),
-	"MiddleName" varchar(50),
+	"HumanId" int REFERENCES "Humans"("HumanId") ON DELETE CASCADE,
 	"Category" varchar(50),
-	"Experience" int CHECK ("Experience" >= 0),  -- Ensure experience is non-negative
-	"DateOfBirth" date
+	"Experience" DOUBLE PRECISION CHECK ("Experience" > 0.3),  -- Ensure experience is more than internship
+	"IsActive" bool 
 );
+
+
+CREATE TABLE "Polyclinics"(
+	"PolyclinicId" SERIAL PRIMARY KEY,
+	"Name" varchar(50),
+	"Address" varchar(50)
+);
+
 
 CREATE TABLE "Districts"(
 	"DistrictId" SERIAL PRIMARY KEY,
-	"DistrictName" varchar(50),
-	"Address" varchar(50)
+	"PolyclinicId" int REFERENCES "Polyclinics"("PolyclinicId") ON DELETE RESTRICT,
+	"Name" varchar(50),
+	"Floor" int
 );
 
 CREATE TABLE "DoctorDistricts"(
 	"DoctorDistrictId" SERIAL PRIMARY KEY,
-	"DoctorId" int REFERENCES "Doctors"("DoctorId") ON DELETE CASCADE,
-	"DistrictId" int REFERENCES "Districts"("DistrictId") ON DELETE CASCADE,
+	"DoctorId" int REFERENCES "Doctors"("DoctorId") ON DELETE RESTRICT,
+	"DistrictId" int REFERENCES "Districts"("DistrictId") ON DELETE RESTRICT,
 	"StartTime" time,
 	"EndTime" time,
 	"RoomNumber" int
@@ -46,22 +67,20 @@ CREATE TABLE "DoctorDistricts"(
 
 CREATE TABLE "Visits"(
 	"VisitId" SERIAL PRIMARY KEY,
-	"PatientId" int REFERENCES "Patients"("PatientId") ON DELETE SET NULL,
-	"DoctorDistrictsId" int REFERENCES "DoctorDistricts"("DoctorDistrictId") ON DELETE SET NULL,
-	"VisitDate" date,
+	"PatientId" int REFERENCES "Patients"("PatientId") ON DELETE RESTRICT,
+	"DoctorDistrictsId" int REFERENCES "DoctorDistricts"("DoctorDistrictId") ON DELETE RESTRICT,
+	"CardId" int REFERENCES "Cards"("CardId") ON DELETE RESTRICT,
+	"VisitDate" TIMESTAMP,
 	"Diagnosis" text,
 	"Prescriptions" text,
 	"IsSickLeaveIssued" bool,
-	"SickLeaveDuration" text
+	"SickLeaveDuration" date
 );
 
 CREATE TABLE "Administrators"(
 	"AdministratorId" SERIAL PRIMARY KEY,
-	"FirstName" varchar(50),
-	"LastName" varchar(50),
-	"MiddleName" varchar(50),
+	"HumanId" int REFERENCES "Humans"("HumanId") ON DELETE CASCADE,
 	"Role" varchar(50),
 	"Login" varchar(20),
 	"Password" varchar(16)
 );
-
