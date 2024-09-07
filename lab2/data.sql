@@ -42,13 +42,13 @@ VALUES
 -- Doctors
 INSERT INTO "Doctors" ("HumanId", "Category", "Experience", "IsActive")
 VALUES
-(3, 'Cardiologist', 10.5, true),
-(1, 'General Practitioner', 5.2, true),
-(4, 'Pediatrician', 6.1, true),
-(5, 'Surgeon', 15.8, true),
-(7, 'Neurologist', 9.3, true),
-(8, 'Dermatologist', 7.0, true),
-(2, 'Endocrinologist', 8.4, true);
+(3, 'Cardiologist', 10, true),
+(1, 'General Practitioner', 5, true),
+(4, 'Pediatrician', 6, true),
+(5, 'Surgeon', 15, true),
+(7, 'Neurologist', 9, true),
+(8, 'Dermatologist', 7, true),
+(2, 'Endocrinologist', 8, true);
 
 
 --Polyclinics

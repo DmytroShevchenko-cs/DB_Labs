@@ -37,7 +37,7 @@ CREATE TABLE "Doctors"(
 	"DoctorId" SERIAL PRIMARY KEY,
 	"HumanId" int REFERENCES "Humans"("HumanId") ON DELETE CASCADE,
 	"Category" varchar(50),
-	"Experience" DOUBLE PRECISION CHECK ("Experience" > 0.3),  -- Ensure experience is more than internship
+	"Experience" int PRECISION CHECK ("Experience" > 1),  -- Ensure experience is more than internship
 	"IsActive" bool 
 );
 
