@@ -37,7 +37,7 @@ CREATE TABLE "Doctors"(
 	"DoctorId" SERIAL PRIMARY KEY,
 	"HumanId" int REFERENCES "Humans"("HumanId") ON DELETE CASCADE,
 	"Category" varchar(50),
-	"Experience" int PRECISION CHECK ("Experience" > 1),  -- Ensure experience is more than internship
+	"Experience" int CHECK ("Experience" > 1),  -- Ensure experience is more than internship
 	"IsActive" bool 
 );
 
@@ -59,16 +59,24 @@ CREATE TABLE "Districts"(
 CREATE TABLE "DoctorDistricts"(
 	"DoctorDistrictId" SERIAL PRIMARY KEY,
 	"DoctorId" int REFERENCES "Doctors"("DoctorId") ON DELETE RESTRICT,
-	"DistrictId" int REFERENCES "Districts"("DistrictId") ON DELETE RESTRICT,
+	"DistrictId" int REFERENCES "Districts"("DistrictId") ON DELETE RESTRICT
+);
+
+CREATE TYPE Weekday AS ENUM ('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday');
+
+CREATE TABLE "Schedule"(
+	"ScheduleId" SERIAL PRIMARY KEY,
+	"DoctorDistrictId" int REFERENCES "DoctorDistricts"("DoctorDistrictId") ON DELETE RESTRICT,
 	"StartTime" time,
 	"EndTime" time,
+	"Day" Weekday,
 	"RoomNumber" int
 );
 
 CREATE TABLE "Visits"(
 	"VisitId" SERIAL PRIMARY KEY,
 	"PatientId" int REFERENCES "Patients"("PatientId") ON DELETE RESTRICT,
-	"DoctorDistrictsId" int REFERENCES "DoctorDistricts"("DoctorDistrictId") ON DELETE RESTRICT,
+	"ScheduleId" int REFERENCES "Schedule"("ScheduleId") ON DELETE RESTRICT,
 	"CardId" int REFERENCES "Cards"("CardId") ON DELETE RESTRICT,
 	"VisitDate" TIMESTAMP,
 	"Diagnosis" text,

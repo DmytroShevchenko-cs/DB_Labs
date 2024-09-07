@@ -1,7 +1,5 @@
 -- Surname and initials of patient
-SELECT 
-    ph."FirstName" AS "PatientFirstName",
-    ph."LastName" AS "PatientLastName",
+SELECT DISTINCT
     CONCAT(
 		dh."LastName", 
         '.', 
@@ -13,7 +11,8 @@ SELECT
 FROM public."Visits" v
 JOIN public."Patients" p ON v."PatientId" = p."PatientId"
 JOIN public."Humans" ph ON p."HumanId" = ph."HumanId"
-JOIN public."DoctorDistricts" dd ON v."DoctorDistrictsId" = dd."DoctorDistrictId"
+JOIN public."Schedule" sc ON v."ScheduleId" =  sc."ScheduleId"
+JOIN public."DoctorDistricts" dd ON sc."DoctorDistrictId" = dd."DoctorDistrictId"
 JOIN public."Doctors" d ON dd."DoctorId" = d."DoctorId"
 JOIN public."Humans" dh ON d."HumanId" = dh."HumanId"
-WHERE v."VisitId" = 5; -- parameter
+WHERE v."PatientId" = 2; -- parameter

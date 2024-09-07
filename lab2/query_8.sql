@@ -10,7 +10,8 @@ SELECT
     COUNT(DISTINCT p."PatientId") AS "PatientCount"
 FROM public."Visits" v
 JOIN public."Patients" p ON v."PatientId" = p."PatientId"
-JOIN public."DoctorDistricts" dd ON v."DoctorDistrictsId" = dd."DoctorDistrictId"
+JOIN public."Schedule" sc ON v."ScheduleId" =  sc."ScheduleId"
+JOIN public."DoctorDistricts" dd ON sc."DoctorDistrictId" = dd."DoctorDistrictId"
 JOIN public."Districts" dist ON dd."DistrictId" = dist."DistrictId"
 JOIN public."Polyclinics" pl ON dist."PolyclinicId" = pl."PolyclinicId"
 JOIN public."Doctors" d ON dd."DoctorId" = d."DoctorId"

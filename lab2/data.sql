@@ -76,20 +76,39 @@ VALUES
 
 
 -- DoctorDistricts
-INSERT INTO "DoctorDistricts" ("DoctorId", "DistrictId", "StartTime", "EndTime", "RoomNumber")
+INSERT INTO "DoctorDistricts" ("DoctorId", "DistrictId")
 VALUES
-(1, 1, '09:00', '17:00', 101),
-(2, 2, '10:00', '16:00', 102),
-(3, 3, '08:00', '14:00', 103),
-(4, 4, '12:00', '18:00', 104),
-(5, 5, '09:00', '15:00', 105),
-(6, 6, '11:00', '19:00', 106),
-(7, 7, '08:00', '13:00', 107);
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5),
+(6, 6),
+(7, 7);
+
+
+-- Schedule
+INSERT INTO "Schedule" ("DoctorDistrictId", "StartTime", "EndTime", "Day", "RoomNumber")
+VALUES
+(1, '09:00', '17:00', 'Monday', 101),
+(1, '09:00', '17:00', 'Wednesday', 101),
+(2, '10:00', '16:00', 'Tuesday', 102),
+(2, '10:00', '16:00', 'Thursday', 102),
+(3, '08:00', '14:00', 'Monday', 103),
+(3, '08:00', '14:00', 'Friday', 103),
+(4, '12:00', '18:00', 'Tuesday', 104),
+(4, '12:00', '18:00', 'Friday', 104),
+(5, '09:00', '15:00', 'Wednesday', 105),
+(5, '09:00', '15:00', 'Thursday', 105),
+(6, '11:00', '19:00', 'Monday', 106),
+(6, '11:00', '19:00', 'Tuesday', 106),
+(7, '08:00', '13:00', 'Thursday', 107),
+(7, '08:00', '13:00', 'Friday', 107);
 
 
 
 -- Visits
-INSERT INTO "Visits" ("PatientId", "DoctorDistrictsId", "CardId", "VisitDate", "Diagnosis", "Prescriptions", "IsSickLeaveIssued", "SickLeaveDuration")
+INSERT INTO "Visits" ("PatientId", "ScheduleId", "CardId", "VisitDate", "Diagnosis", "Prescriptions", "IsSickLeaveIssued", "SickLeaveDuration")
 VALUES
 (1, 1, 1, '2024-09-01 09:00:00', 'Flu', 'Paracetamol', TRUE, '2024-09-10'),
 (1, 2, 1, '2024-09-10 10:00:00', 'Headache', 'Ibuprofen', FALSE, NULL),

@@ -1,8 +1,9 @@
--- romm number and work time
+-- room number and work time
 SELECT 
-	dd."RoomNumber",
-	dd."StartTime",
-	dd."EndTime"
-FROM public."DoctorDistricts" dd
-JOIN public."Doctors" d ON dd."DoctorId" = d."DoctorId"
+	sc."RoomNumber",
+	sc."StartTime",
+	sc."EndTime",
+	sc."Day"
+FROM public."Schedule" sc
+JOIN public."DoctorDistricts" dd ON sc."DoctorDistrictId" = dd."DoctorDistrictId"
 WHERE dd."DoctorId" = 1; -- parameter

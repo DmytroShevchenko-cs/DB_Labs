@@ -12,8 +12,6 @@ WHERE p."PatientId" = 2;
 
 --last visits of patient
 SELECT 
-    h."FirstName" AS "PatientFirstName",
-    h."LastName" AS "PatientLastName",	
     p."Address" AS "PatientAddress",
     v."VisitDate",
     v."Diagnosis"
