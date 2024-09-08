@@ -1,10 +1,8 @@
 -- Who works in given room
-SELECT 
+SELECT DISTINCT
 	dh."FirstName",
 	dh."LastName",
 	dh."MiddleName"
 FROM public."Schedule" sc
-JOIN public."DoctorDistricts" dd ON sc."DoctorDistrictId" = dd."DoctorDistrictId"
-join public."Doctors" d on dd."DoctorId" = d."DoctorId"
-join public."Humans" dh on d."HumanId" = dh."HumanId"
+join public."Humans" dh on sc."DoctorId" = dh."HumanId"
 WHERE sc."RoomNumber" = 102; -- parameter

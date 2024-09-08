@@ -12,17 +12,16 @@ VALUES
 
 
 -- Patients
-INSERT INTO "Patients" ("Address", "HumanId")
+INSERT INTO "Patients" ("PatientId", "Address")
 VALUES
-('123 Elm St', 1),
-('456 Oak Ave', 2),
-('789 Pine Ln', 3),
-('321 Maple Blvd', 4),
-('654 Cedar Ct', 5),
-('987 Walnut Rd', 6),
-('543 Pinewood St', 7),
-('789 Cedar Dr', 8);
-
+(1, '123 Elm St'),
+(2, '456 Oak Ave'),
+(3, '789 Pine Ln'),
+(4, '321 Maple Blvd'),
+(5, '654 Cedar Ct'),
+(6, '987 Walnut Rd'),
+(7, '543 Pinewood St'),
+(8, '789 Cedar Dr');
 
 
 --Cards
@@ -38,9 +37,8 @@ VALUES
 (8, '2021-11-15', 'POL567321');
 
 
-
 -- Doctors
-INSERT INTO "Doctors" ("HumanId", "Category", "Experience", "IsActive")
+INSERT INTO "Doctors" ("DoctorId", "Category", "Experience", "IsActive")
 VALUES
 (3, 'Cardiologist', 10, true),
 (1, 'General Practitioner', 5, true),
@@ -48,7 +46,8 @@ VALUES
 (5, 'Surgeon', 15, true),
 (7, 'Neurologist', 9, true),
 (8, 'Dermatologist', 7, true),
-(2, 'Endocrinologist', 8, true);
+(2, 'Endocrinologist', 8, true),
+(6, 'Cardiologist', 7, true);
 
 
 --Polyclinics
@@ -59,7 +58,6 @@ VALUES
 ('Eastside Clinic', '300 East Ave'),
 ('Westside Healthcare', '400 West Blvd'),
 ('Southside Medical Plaza', '500 South St');
-
 
 
 -- Districts
@@ -74,37 +72,35 @@ VALUES
 (5, 'District 7', 1);
 
 
-
 -- DoctorDistricts
-INSERT INTO "DoctorDistricts" ("DoctorId", "DistrictId")
+INSERT INTO "DoctorDistricts" ("DoctorId", "DistrictId", "DateOfStartWork")
 VALUES
-(1, 1),
-(2, 2),
-(3, 3),
-(4, 4),
-(5, 5),
-(6, 6),
-(7, 7);
+(1, 1, '2018-03-25'),
+(2, 2, '2019-02-24'),
+(3, 3, '2021-06-09'),
+(4, 4, '2020-07-16'),
+(5, 5, '2021-08-01'),
+(6, 6, '2023-02-21'),
+(7, 7, '2022-11-12');
 
 
 -- Schedule
-INSERT INTO "Schedule" ("DoctorDistrictId", "StartTime", "EndTime", "Day", "RoomNumber")
+INSERT INTO "Schedule" ("DoctorId", "DistrictId", "StartTime", "EndTime", "Day", "RoomNumber")
 VALUES
-(1, '09:00', '17:00', 'Monday', 101),
-(1, '09:00', '17:00', 'Wednesday', 101),
-(2, '10:00', '16:00', 'Tuesday', 102),
-(2, '10:00', '16:00', 'Thursday', 102),
-(3, '08:00', '14:00', 'Monday', 103),
-(3, '08:00', '14:00', 'Friday', 103),
-(4, '12:00', '18:00', 'Tuesday', 104),
-(4, '12:00', '18:00', 'Friday', 104),
-(5, '09:00', '15:00', 'Wednesday', 105),
-(5, '09:00', '15:00', 'Thursday', 105),
-(6, '11:00', '19:00', 'Monday', 106),
-(6, '11:00', '19:00', 'Tuesday', 106),
-(7, '08:00', '13:00', 'Thursday', 107),
-(7, '08:00', '13:00', 'Friday', 107);
-
+(1, 1, '09:00', '17:00', 'Monday', 101),
+(1, 1, '09:00', '17:00', 'Wednesday', 101),
+(2, 2, '10:00', '16:00', 'Tuesday', 102),
+(2, 2, '10:00', '16:00', 'Thursday', 102),
+(2, 2, '08:00', '14:00', 'Monday', 103),
+(3, 3, '08:00', '14:00', 'Friday', 103),
+(4, 4, '12:00', '18:00', 'Tuesday', 104),
+(4, 4, '12:00', '18:00', 'Friday', 104),
+(5, 5, '09:00', '15:00', 'Wednesday', 105),
+(5, 5, '09:00', '15:00', 'Thursday', 105),
+(6, 6, '11:00', '19:00', 'Monday', 106),
+(6, 6, '11:00', '19:00', 'Tuesday', 106),
+(7, 7, '08:00', '13:00', 'Thursday', 107),
+(7, 7, '08:00', '13:00', 'Friday', 107);
 
 
 -- Visits
@@ -122,11 +118,8 @@ VALUES
 (5, 6, 5, '2024-09-18 11:30:00', 'Fever', 'Antipyretics', TRUE, '2024-09-21');
 
 
-
-
-
 -- Administrators
-INSERT INTO "Administrators" ("HumanId", "Role", "Login", "Password")
+INSERT INTO "Administrators" ("AdministratorId", "Role", "Login", "Password")
 VALUES
 (5, 'Admin', 'admin1', 'adminPass1'),
 (1, 'Manager', 'manager1', 'managerPass1'),

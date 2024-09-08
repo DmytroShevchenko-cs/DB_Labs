@@ -9,10 +9,6 @@ SELECT DISTINCT
         '.'
     ) AS "DoctorInitials"
 FROM public."Visits" v
-JOIN public."Patients" p ON v."PatientId" = p."PatientId"
-JOIN public."Humans" ph ON p."HumanId" = ph."HumanId"
 JOIN public."Schedule" sc ON v."ScheduleId" =  sc."ScheduleId"
-JOIN public."DoctorDistricts" dd ON sc."DoctorDistrictId" = dd."DoctorDistrictId"
-JOIN public."Doctors" d ON dd."DoctorId" = d."DoctorId"
-JOIN public."Humans" dh ON d."HumanId" = dh."HumanId"
+JOIN public."Humans" dh ON sc."DoctorId" = dh."HumanId"
 WHERE v."PatientId" = 2; -- parameter

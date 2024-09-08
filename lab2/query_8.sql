@@ -11,11 +11,9 @@ SELECT
 FROM public."Visits" v
 JOIN public."Patients" p ON v."PatientId" = p."PatientId"
 JOIN public."Schedule" sc ON v."ScheduleId" =  sc."ScheduleId"
-JOIN public."DoctorDistricts" dd ON sc."DoctorDistrictId" = dd."DoctorDistrictId"
-JOIN public."Districts" dist ON dd."DistrictId" = dist."DistrictId"
+JOIN public."Districts" dist ON sc."DistrictId" = dist."DistrictId"
 JOIN public."Polyclinics" pl ON dist."PolyclinicId" = pl."PolyclinicId"
-JOIN public."Doctors" d ON dd."DoctorId" = d."DoctorId"
-JOIN public."Humans" dh ON d."HumanId" = dh."HumanId"
+JOIN public."Humans" dh ON sc."DoctorId" = dh."HumanId"
 WHERE pl."PolyclinicId" = 1
 GROUP BY 
     pl."Name",

@@ -7,7 +7,7 @@ SELECT
     v."Diagnosis"
 FROM public."Visits" v
 JOIN public."Patients" p ON v."PatientId" = p."PatientId"
-JOIN public."Humans" h ON p."HumanId" = h."HumanId"
+JOIN public."Humans" h ON p."PatientId" = h."HumanId"
 WHERE p."PatientId" = 2;
 
 --last visits of patient
@@ -17,7 +17,7 @@ SELECT
     v."Diagnosis"
 FROM public."Visits" v
 JOIN public."Patients" p ON v."PatientId" = p."PatientId"
-JOIN public."Humans" h ON p."HumanId" = h."HumanId"
+JOIN public."Humans" h ON p."PatientId" = h."HumanId"
 WHERE p."PatientId" = 2
 AND v."VisitDate" = (
     SELECT MAX(v2."VisitDate")

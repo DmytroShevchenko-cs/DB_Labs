@@ -5,5 +5,4 @@ SELECT
 	sc."EndTime",
 	sc."Day"
 FROM public."Schedule" sc
-JOIN public."DoctorDistricts" dd ON sc."DoctorDistrictId" = dd."DoctorDistrictId"
-WHERE dd."DoctorId" = 1; -- parameter
+WHERE sc."DoctorId" = 1; -- parameter
