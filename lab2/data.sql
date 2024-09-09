@@ -25,16 +25,16 @@ VALUES
 
 
 --Cards
-INSERT INTO "Cards" ("PatientId", "CardCreationDate", "PolicyNumber")
+INSERT INTO "Cards" ("CardCreationDate", "PolicyNumber")
 VALUES
-(1, '2021-03-25', 'POL123456'),
-(2, '2022-05-12', 'POL654321'),
-(3, '2020-01-05', 'POL789012'),
-(4, '2021-09-11', 'POL345678'),
-(5, '2023-06-30', 'POL567890'),
-(6, '2022-08-22', 'POL678901'),
-(7, '2023-02-14', 'POL345432'),
-(8, '2021-11-15', 'POL567321');
+('2021-03-25', 'POL123456'),
+('2022-05-12', 'POL654321'),
+('2020-01-05', 'POL789012'),
+('2021-09-11', 'POL345678'),
+('2023-06-30', 'POL567890'),
+('2022-08-22', 'POL678901'),
+('2023-02-14', 'POL345432'),
+('2021-11-15', 'POL567321');
 
 
 -- Doctors
@@ -104,18 +104,18 @@ VALUES
 
 
 -- Visits
-INSERT INTO "Visits" ("PatientId", "ScheduleId", "CardId", "VisitDate", "Diagnosis", "Prescriptions", "IsSickLeaveIssued", "SickLeaveDuration")
+INSERT INTO "Visits" ("PatientId", "ScheduleId", "VisitDate", "Diagnosis", "Prescriptions", "IsSickLeaveIssued", "SickLeaveDuration")
 VALUES
-(1, 1, 1, '2024-09-01 09:00:00', 'Flu', 'Paracetamol', TRUE, '2024-09-10'),
-(1, 2, 1, '2024-09-10 10:00:00', 'Headache', 'Ibuprofen', FALSE, NULL),
-(2, 1, 2, '2024-09-05 11:00:00', 'Back Pain', 'Tylenol', TRUE, '2024-09-11'),
-(2, 3, 2, '2024-09-15 14:00:00', 'Cough', 'Cough Syrup', FALSE, NULL),
-(3, 2, 3, '2024-09-07 08:30:00', 'Allergy', 'Antihistamines', FALSE, NULL),
-(3, 4, 3, '2024-09-20 13:00:00', 'Stomach Ache', 'Antacids', TRUE, '2024-09-21'),
-(4, 3, 4, '2024-09-12 15:00:00', 'Flu', 'Cough Syrup', TRUE, '2024-09-15'),
-(4, 5, 4, '2024-09-22 09:30:00', 'Headache', 'Pain Relievers', FALSE, NULL),
-(5, 4, 5, '2024-09-03 10:00:00', 'Skin Rash', 'Topical Cream', FALSE, NULL),
-(5, 6, 5, '2024-09-18 11:30:00', 'Fever', 'Antipyretics', TRUE, '2024-09-21');
+(1, 1, '2024-09-01 09:00:00', 'Flu', 'Paracetamol', TRUE, '2024-09-10'),
+(1, 2, '2024-09-10 10:00:00', 'Headache', 'Ibuprofen', FALSE, NULL),
+(2, 1, '2024-09-05 11:00:00', 'Back Pain', 'Tylenol', TRUE, '2024-09-11'),
+(2, 3, '2024-09-15 14:00:00', 'Cough', 'Cough Syrup', FALSE, NULL),
+(3, 2, '2024-09-07 08:30:00', 'Allergy', 'Antihistamines', FALSE, NULL),
+(3, 4, '2024-09-20 13:00:00', 'Stomach Ache', 'Antacids', TRUE, '2024-09-21'),
+(4, 3, '2024-09-12 15:00:00', 'Flu', 'Cough Syrup', TRUE, '2024-09-15'),
+(4, 5, '2024-09-22 09:30:00', 'Headache', 'Pain Relievers', FALSE, NULL),
+(5, 4, '2024-09-03 10:00:00', 'Skin Rash', 'Topical Cream', FALSE, NULL),
+(5, 6, '2024-09-18 11:30:00', 'Fever', 'Antipyretics', TRUE, '2024-09-21');
 
 
 -- Administrators

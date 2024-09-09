@@ -19,8 +19,15 @@ CREATE TABLE "Humans"(
 	"DateOfBirth" date
 );
 
+CREATE TABLE "Cards"(
+	"CardId" SERIAL PRIMARY KEY,
+	"CardCreationDate" date,
+	"PolicyNumber" varchar(50)
+);
+
 CREATE TABLE "Patients"(
 	"PatientId" int PRIMARY KEY REFERENCES "Humans"("HumanId") ON DELETE RESTRICT,
+	"CardId" int REFERENCES "Cards"("CardId") ON DELETE RESTRICT,
 	"Address" varchar(255),
 	"IsActive" bool DEFAULT TRUE
 );
@@ -38,14 +45,6 @@ CREATE TABLE "Administrators"(
 	"Login" varchar(20),
 	"Password" varchar(16)
 );
-
-CREATE TABLE "Cards"(
-	"CardId" SERIAL PRIMARY KEY,
-	"PatientId" int REFERENCES "Patients"("PatientId") ON DELETE RESTRICT,
-	"CardCreationDate" date,
-	"PolicyNumber" varchar(50)
-);
-
 
 
 CREATE TABLE "Polyclinics"(
@@ -87,7 +86,6 @@ CREATE TABLE "Visits"(
 	"VisitId" SERIAL PRIMARY KEY,
 	"PatientId" int REFERENCES "Patients"("PatientId") ON DELETE RESTRICT,
 	"ScheduleId" int REFERENCES "Schedule"("ScheduleId") ON DELETE RESTRICT,
-	"CardId" int REFERENCES "Cards"("CardId") ON DELETE RESTRICT,
 	"VisitDate" TIMESTAMP,
 	"Diagnosis" text,
 	"Prescriptions" text,
