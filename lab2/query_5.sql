@@ -5,6 +5,6 @@ SELECT
 	v."Diagnosis",
 	v."Prescriptions"
 FROM public."Visits" v
-WHERE v."Diagnosis" = 'Flu'; -- paremeter
+WHERE v."Diagnosis" ILIKE 'fLu'; -- paremeter Case-insensitive
 
 
