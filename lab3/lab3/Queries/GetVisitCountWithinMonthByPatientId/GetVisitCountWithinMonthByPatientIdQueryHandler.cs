@@ -22,9 +22,9 @@ public class GetVisitCountWithinMonthByPatientIdQueryHandler: IRequestHandler<Ge
             var visitCount = await _dbContext.Visits
                 .Include(v => v.Patient)
                 .ThenInclude(p => p.Human)
-                .Where(v => v.PatientId == 1)
-                .Where(v => v.VisitDate.Year == 2024)
-                .Where(v => v.VisitDate.Month == 9)
+                .Where(v => v.PatientId == request.PatientId)
+                .Where(v => v.VisitDate.Year == request.Year)
+                .Where(v => v.VisitDate.Month == request.Month)
                 .CountAsync(cancellationToken);
 
             return visitCount;

@@ -20,7 +20,7 @@ public class GetVisitByPatientIdQueryHandler : IRequestHandler<GetVisitByPatient
             var visits = await _dbContext.Visits
                 .Include(v => v.Patient)
                 .ThenInclude(r => r.Human)
-                .Where(v => v.Patient.PatientId == 2)
+                .Where(v => v.Patient.PatientId == request.PatientId)
                 .OrderByDescending(v => v.VisitDate)
                 .Select(r => new GetVisitByPatientIdQueryResponse
                 {

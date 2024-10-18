@@ -4,5 +4,5 @@ using MediatR;
 
 public class GetVisitByPatientIdQuery : IRequest<GetVisitByPatientIdQueryResponse>
 {
-    
+    public int PatientId { get; set; }
 }

@@ -21,7 +21,7 @@ public class GetDoctorDaysByIdQueryHandler : IRequestHandler<GetDoctorDaysByIdQu
         {
             var doctorDays = await _dbContext.Schedules
                 .Include(r => r.Doctor)
-                .Where(r => r.DoctorId == 2)
+                .Where(r => r.DoctorId == request.DoctorId)
                 .Select(r => new GetDoctorDaysByIdQueryResponse
                 {
                     StartTime = r.StartTime,

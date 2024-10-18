@@ -19,7 +19,7 @@ public class GetPrescriptionsByDiagnosisQueryHandler : IRequestHandler<GetPrescr
         try
         {
             var prescriptions = await _dbContext.Visits
-                .Where(v => v.Diagnosis.ToLower().Contains("flu"))
+                .Where(v => v.Diagnosis.ToLower().Contains(request.Diagnosis))
                 .Select(r => new GetPrescriptionsByDiagnosisQueryResponse
                 {
                     Diagnosis = r.Diagnosis,

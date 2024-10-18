@@ -21,7 +21,7 @@ public class GetDoctorsInitialsByPatientIdQueryHandler : IRequestHandler<GetDoct
                 .Include(r => r.Schedule)
                 .ThenInclude(r => r.Doctor)
                 .ThenInclude(r => r.Human)
-                .Where(r => r.PatientId == 2)
+                .Where(r => r.PatientId == request.PatientId)
                 .Select(r => new GetDoctorsInitialsByPatientIdQueryResponse
                 {
                     DoctorInfo =string.Concat(

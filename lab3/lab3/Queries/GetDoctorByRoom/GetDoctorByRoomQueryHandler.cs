@@ -21,7 +21,7 @@ public class GetDoctorByRoomQueryHandler: IRequestHandler<GetDoctorByRoomQuery, 
             var doctorDays = await _dbContext.Schedules
                 .Include(sc => sc.Doctor)
                 .ThenInclude(d => d.Human)
-                .Where(sc => sc.RoomNumber == 102) 
+                .Where(sc => sc.RoomNumber == request.RoomNumber) 
                 .Select(sc => new GetDoctorByRoomQueryResponse
                 {
                     FirstName = sc.Doctor.Human.FirstName,

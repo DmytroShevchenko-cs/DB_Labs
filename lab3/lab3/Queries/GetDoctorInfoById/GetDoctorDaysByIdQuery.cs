@@ -4,5 +4,5 @@ using MediatR;
 
 public class GetDoctorDaysByIdQuery : IRequest<List<GetDoctorDaysByIdQueryResponse>>
 {
-    
+    public int DoctorId { get; set; }
 }

@@ -24,7 +24,7 @@ public class GetNumbersOfPatientsQueryHandler : IRequestHandler<GetNumbersOfPati
                 .ThenInclude(dist => dist.Polyclinic) 
                 .Include(v => v.Schedule.Doctor) 
                 .ThenInclude(d => d.Human) 
-                .Where(v => v.Schedule.District.Polyclinic.PolyclinicId == 1)
+                .Where(v => v.Schedule.District.Polyclinic.PolyclinicId == request.PolyclinicId)
                 .GroupBy(v => new 
                 {
                     PolyclinicName = v.Schedule.District.Polyclinic.Name,
