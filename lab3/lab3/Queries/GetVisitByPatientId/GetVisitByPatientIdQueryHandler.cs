@@ -17,11 +17,21 @@ public class GetVisitByPatientIdQueryHandler : IRequestHandler<GetVisitByPatient
     {
         try
         {
-            var visits = await _dbContext.Visits.ToListAsync(cancellationToken);
-            return new GetVisitByPatientIdQueryResponse()
-            {
-                ids = visits.Select(r => r.VisitId).ToList()
-            };
+            var visits = await _dbContext.Visits
+                .Include(v => v.Patient)
+                .ThenInclude(r => r.Human)
+                .Where(v => v.Patient.PatientId == 2)
+                .OrderByDescending(v => v.VisitDate)
+                .Select(r => new GetVisitByPatientIdQueryResponse
+                {
+                    Address = r.Patient.Address,
+                    VisitDate = r.VisitDate,
+                    Diagnosis = r.Diagnosis
+                })
+                .FirstOrDefaultAsync(cancellationToken);
+
+            return visits;
+
         }
         catch (Exception e)
         {

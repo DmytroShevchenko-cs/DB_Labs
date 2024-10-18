@@ -11,7 +11,7 @@ using Services.AppService;
 
 public static class Lab3
 {
-    public static void Main()
+    public static async Task Main()
     {
         var services = new ServiceCollection();
         var configurationBuilder = new ConfigurationBuilder();
@@ -21,20 +21,9 @@ public static class Lab3
         ConfigureServices(services, configuration);
         
         var serviceProvider = services.BuildServiceProvider();
-        Console.WriteLine(configuration.GetConnectionString("DefaultConnection"));
-
-        var mediator = new Mediator(serviceProvider);
         
-        var checkAbilitySendInChannelQuery = new GetVisitByPatientIdQuery
-        {
-           
-        };
-
-        var checkAbilitySendInChannelResult = mediator.Send(checkAbilitySendInChannelQuery).Result;
-        Console.WriteLine(checkAbilitySendInChannelResult.ids);
-        
-        // var app = serviceProvider.GetService<App>();
-        // app!.Run();
+        var app = serviceProvider.GetService<App>();
+        await app!.Run();
     }
 
     private static IConfiguration ConfigureConfiguration(IConfigurationBuilder configurationBuilder)
