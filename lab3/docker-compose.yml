@@ -1,0 +1,33 @@
+
+networks:
+  lab3:
+    driver: bridge
+services:
+  app:
+    container_name: lab3
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    networks:
+      - lab3
+    depends_on:
+      - postgres_db
+    stdin_open: true
+    tty: true
+  postgres_db:
+    container_name: postgres_lab3
+    image: postgres:latest
+    environment: 
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: verysecurepass
+      POSTGRES_DB: lab3
+    ports:
+      - "5432:5432"
+    networks:
+      - lab3
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+volumes:
+  postgres-data:

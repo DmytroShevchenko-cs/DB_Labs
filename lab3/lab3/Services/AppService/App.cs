@@ -196,8 +196,6 @@ public class App : IApp
                     break;
                 }
             }
-
-           
         }
     }
 }

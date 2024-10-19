@@ -3,10 +3,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Database;
-using MediatR;
-using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Configuration;
-using Queries.GetVisitByPatientId;
 using Services.AppService;
 
 public static class Lab3
@@ -21,6 +18,12 @@ public static class Lab3
         ConfigureServices(services, configuration);
         
         var serviceProvider = services.BuildServiceProvider();
+        
+        using (var scope = serviceProvider.CreateScope())
+        {
+            var dbContext = scope.ServiceProvider.GetRequiredService<HospitalDbContext>();
+            await dbContext.Database.MigrateAsync();
+        }
         
         Console.OutputEncoding = System.Text.Encoding.UTF8;
         var app = serviceProvider.GetService<App>();
