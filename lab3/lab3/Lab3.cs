@@ -22,6 +22,7 @@ public static class Lab3
         
         var serviceProvider = services.BuildServiceProvider();
         
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
         var app = serviceProvider.GetService<App>();
         await app!.Run();
     }
