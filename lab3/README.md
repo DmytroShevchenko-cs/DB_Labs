@@ -1,7 +1,8 @@
 # Before run a docker compose you must:
 
--edit `docker-compose.yml` (Change a props for connecting to postgres)
--edit `appsettings.json` (Change a connection string to db using props from docker-compose file)
+- edit `docker-compose.yml` (Change a props for connecting to postgres)
+
+- edit `appsettings.json` (Change a connection string to db using props from docker-compose file)
 
 # Run
 1. Open project in terminal and use `docker-compose build` command for build the project
