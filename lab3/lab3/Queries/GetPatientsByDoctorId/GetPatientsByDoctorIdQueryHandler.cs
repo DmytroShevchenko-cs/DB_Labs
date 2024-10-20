@@ -23,7 +23,7 @@ public class GetPatientsByDoctorIdQueryHandler : IRequestHandler<GetPatientsByDo
                 .ThenInclude(r => r.Human)
                 .Include(r => r.Schedule)
                 .Where(r => r.Schedule.DoctorId == request.DoctorId)
-                .Where(r => r.SickLeaveDuration > DateTime.Now)
+                .Where(r => r.SickLeaveDuration != null && r.SickLeaveDuration.Value > DateTime.UtcNow)
                 .Select(r => new GetPatientsByDoctorIdQueryResponse
                 {
                     FirstName = r.Patient.Human.FirstName,
