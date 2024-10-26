@@ -261,7 +261,7 @@ namespace lab3.Migrations
                 table: "Visits",
                 column: "ScheduleId");
             
-                        migrationBuilder.Sql(
+            migrationBuilder.Sql(
                 "INSERT INTO \"Humans\" (\"FirstName\", \"LastName\", \"MiddleName\", \"Gender\", \"Age\", \"DateOfBirth\")" +
                 "VALUES" +
                 "('John', 'Doe', 'Michael', 1, 35, '1989-03-25')," +

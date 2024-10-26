@@ -50,7 +50,6 @@ public static class Lab3
             serviceConfiguration.RegisterServicesFromAssembly(typeof(HospitalDbContext).Assembly);
         });
         
-        // Добавляем другие сервисы
         services.AddTransient<App>();
     }
 }
