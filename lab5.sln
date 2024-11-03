@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lab5.core", "lab5.core\lab5.core.csproj", "{24D489E6-F073-4042-AE2B-646EF1425C7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lab5.dataAccess", "lab5.dataAccess\lab5.dataAccess.csproj", "{D5CBC642-B8D7-4581-A741-F35077B77BA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lab5.web", "lab5.web\lab5.web.csproj", "{E90132D1-EAB6-4DBE-9CA5-D8B226AA70BD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{24D489E6-F073-4042-AE2B-646EF1425C7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24D489E6-F073-4042-AE2B-646EF1425C7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24D489E6-F073-4042-AE2B-646EF1425C7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24D489E6-F073-4042-AE2B-646EF1425C7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5CBC642-B8D7-4581-A741-F35077B77BA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5CBC642-B8D7-4581-A741-F35077B77BA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5CBC642-B8D7-4581-A741-F35077B77BA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5CBC642-B8D7-4581-A741-F35077B77BA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E90132D1-EAB6-4DBE-9CA5-D8B226AA70BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E90132D1-EAB6-4DBE-9CA5-D8B226AA70BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E90132D1-EAB6-4DBE-9CA5-D8B226AA70BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E90132D1-EAB6-4DBE-9CA5-D8B226AA70BD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
