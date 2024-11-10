@@ -6,4 +6,73 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="MediatR" Version="12.4.1" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.10">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.10">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="NodaTime" Version="3.2.0" />
+      <PackageReference Include="Npgsql" Version="8.0.5" />
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.10" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Commands\Administrators\" />
+      <Folder Include="Commands\Cards\" />
+      <Folder Include="Commands\Districts\" />
+      <Folder Include="Commands\DoctorDistricts\" />
+      <Folder Include="Commands\Doctors\" />
+      <Folder Include="Commands\Patients\" />
+      <Folder Include="Commands\Polyclinics\" />
+      <Folder Include="Commands\Schedules\" />
+      <Folder Include="Commands\Visits\" />
+      <Folder Include="Models\Administrator\AdministratorRequest\" />
+      <Folder Include="Models\Administrator\AdministratorResponse\" />
+      <Folder Include="Models\Card\CardRequest\" />
+      <Folder Include="Models\Card\CardResponse\" />
+      <Folder Include="Models\District\DistrictRequest\" />
+      <Folder Include="Models\District\DistrictResponse\" />
+      <Folder Include="Models\DoctorDistrict\DoctorDistrictResponse\" />
+      <Folder Include="Models\Doctor\DoctorRequest\" />
+      <Folder Include="Models\Doctor\DoctorResponse\" />
+      <Folder Include="Models\Patient\PatientResponse\" />
+      <Folder Include="Models\Polyclinic\PolyclinicResponse\" />
+      <Folder Include="Models\Schedule\ScheduleResponse\" />
+      <Folder Include="Models\Visit\VisitResponse\" />
+      <Folder Include="Queries\Administrators\GetAdministratorById\" />
+      <Folder Include="Queries\Administrators\GetAdministrators\" />
+      <Folder Include="Queries\Cards\GetCardByPatientId\" />
+      <Folder Include="Queries\Cards\GetCards\" />
+      <Folder Include="Queries\Districts\GetDistrictByProps\" />
+      <Folder Include="Queries\Districts\GetDistricts\" />
+      <Folder Include="Queries\DoctorDistricts\GetDistrictsByDoctorId\" />
+      <Folder Include="Queries\DoctorDistricts\GetDoctorsInDistricts\" />
+      <Folder Include="Queries\Doctors\GetDoctorById\" />
+      <Folder Include="Queries\Doctors\GetDoctorsByProps\" />
+      <Folder Include="Queries\Doctors\GetDoctors\" />
+      <Folder Include="Queries\Patients\GetPatientById\" />
+      <Folder Include="Queries\Patients\GetPatients\" />
+      <Folder Include="Queries\Polyclinics\GetPolyclinics\" />
+      <Folder Include="Queries\Schedules\GetSchedulesByDistrictId\" />
+      <Folder Include="Queries\Schedules\GetSchedulesByDoctorId\" />
+      <Folder Include="Queries\Visits\GetVisitsByDate\" />
+      <Folder Include="Queries\Visits\GetVisitsByPatientId\" />
+      <Folder Include="Queries\Visits\GetVisitsByDoctorId\" />
+      <Folder Include="Services\AdministratorService\" />
+      <Folder Include="Services\CardService\" />
+      <Folder Include="Services\DistrictService\" />
+      <Folder Include="Services\DoctorDistrictsService\" />
+      <Folder Include="Services\DoctorService\" />
+      <Folder Include="Services\PatientService\" />
+      <Folder Include="Services\PolyclinicService\" />
+      <Folder Include="Services\ScheduleService\" />
+      <Folder Include="Services\VisitService\" />
+    </ItemGroup>
+
 </Project>
